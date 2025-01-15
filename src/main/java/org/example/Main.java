@@ -9,7 +9,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * Main class that reads from a JSON file.
+ */
 public class Main{
     static class Euro2024{
         @JsonProperty("Id")
@@ -96,6 +98,12 @@ public class Main{
                     '}';
         }
     }
+
+    /**
+     * Function that reads from a JSON file.
+     * @param filePath - the path to the JSON file
+     * @return euro2024List
+     */
     public static List<Euro2024> readFromFile(String filePath) {
         List<Euro2024> euro2024List = new ArrayList<>();
         try {
@@ -107,7 +115,11 @@ public class Main{
         }
         return euro2024List;
     }
-
+    /**
+     * Function that displays the matches with a capacity greater than the one given by the user.
+     * @param euro2024List - the list of matches
+     * @param capacity - the capacity given by the user
+     */
     public static void displayMatches(List<Euro2024> euro2024List, int capacity) {
         for(Euro2024 euro2024 : euro2024List){
             if(euro2024.getCapacity() >= capacity){
@@ -115,7 +127,10 @@ public class Main{
             }
         }
     }
-
+    /**
+     * Function that displays the matches that will take place in München after 30.06.2024.
+     * @param euro2024List - the list of matches
+     */
     public static void displayMatchInMunchen(List<Euro2024> euro2024List){
         euro2024List.stream()
                 .filter(euro2024 -> euro2024.getDate().isAfter(LocalDate.of(2024, 6, 30))&&euro2024.getLocation().equals("München"))
@@ -123,8 +138,10 @@ public class Main{
                 .forEach(euro2024 -> System.out.println(euro2024.getDate() + ": " + euro2024.getTeam1() + " vs " + euro2024.getTeam2()));
     }
 
-
-
+    /**
+     * Main function that reads from a JSON file and displays the matches.
+     * @param args - the command line arguments
+     */
     public static void main(String[] args) {
         List<Euro2024> euro2024List = readFromFile("G:\\Proiecte JAVA\\SarghiutaTudor723Aufgabe1\\SarghiutaTudor723Aufgabe1\\src\\main\\java\\org\\example\\spielorte.json");
         Scanner scanner = new Scanner(System.in);
