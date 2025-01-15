@@ -8,7 +8,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 /**
  * Main class that reads from a JSON file.
  */
@@ -120,10 +119,10 @@ public class Main{
      * @param euro2024List - the list of matches
      * @param capacity - the capacity given by the user
      */
-    public static void displayMatches(List<Euro2024> euro2024List, int capacity) {
+    public static void displayMatches(List<Euro2024> euro2024List, int capacity){
         for(Euro2024 euro2024 : euro2024List){
-            if(euro2024.getCapacity() >= capacity){
-                System.out.println(euro2024.getTeam1() + " vs " + euro2024.getTeam2() + " - Date: " + euro2024.getDate() + " - Venue: " + euro2024.getLocation());
+            if(euro2024.getCapacity()>=capacity){
+                System.out.println(euro2024.getTeam1() + " vs " + euro2024.getTeam2() + " - Datum: " + euro2024.getDate() + " - Spielort: " + euro2024.getLocation());
             }
         }
     }
@@ -143,9 +142,9 @@ public class Main{
      * @param args - the command line arguments
      */
     public static void main(String[] args) {
-        List<Euro2024> euro2024List = readFromFile("G:\\Proiecte JAVA\\SarghiutaTudor723Aufgabe1\\SarghiutaTudor723Aufgabe1\\src\\main\\java\\org\\example\\spielorte.json");
+        List<Euro2024> euro2024List = readFromFile("src/main/java/org/example/spielorte.json");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Introdu capacitatea: ");
+        System.out.print("Introdu capacitatea: ");
         int capacity = scanner.nextInt();
         displayMatches(euro2024List, capacity);
         displayMatchInMunchen(euro2024List);
